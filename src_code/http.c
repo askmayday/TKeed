@@ -76,7 +76,7 @@ void do_error(int fd, char *cause, char *err_num, char *short_msg, char *long_ms
 
     // 用log_msg和cause字符串填充错误响应体
     sprintf(body, "<html><title>TKeed Error<title>");
-    sprintf(body, "%s<body bgcolor=""ffffff"">\n", body);
+    sprintf(body, "%s<body bgcolor=""ffffff"">\n", body);   //若body中内容是满的（8192个字节），则加上<body bgcolor=""ffffff"">后再放入body中会溢出
     sprintf(body, "%s%s : %s\n", body, err_num, short_msg);
     sprintf(body, "%s<p>%s : %s\n</p>", body, long_msg, cause);
     sprintf(body, "%s<hr><em>TKeed web server</em>\n</body></html>", body);
