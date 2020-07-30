@@ -32,6 +32,7 @@
     *(uint32_t *) m == ((c3 << 24) | (c2 << 16) | (c1 << 8) | c0)
 
 // 用key-value表示mime_type_t
+// MIME--互联网媒体内容
 typedef struct mime_type{
     const char *type;
     const char *value;
