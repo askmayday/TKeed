@@ -78,6 +78,7 @@ typedef struct tk_http_header{
     struct list_head list;
 }tk_http_header_t;
 
+//声明 tk_http_header_handler_pt 为函数指针，形参表如后括弧内所示，返回值为 int 型
 typedef int (*tk_http_header_handler_pt)(tk_http_request_t* request, tk_http_out_t* out, char* data, int len);
 
 typedef struct tk_http_header_handle{
