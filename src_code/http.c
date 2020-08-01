@@ -97,11 +97,13 @@ void do_error(int fd, char *cause, char *err_num, char *short_msg, char *long_ms
 }
 
 // 处理静态文件请求
+// 静态资源：一般客户端发送请求到web服务器，web服务器从内存在取到相应的文件，返回给客户端，客户端解析并渲染显示出来。如CSS文件,Js文件和图片等。
+// 动态资源：一般客户端请求的动态资源，先将请求交于web容器，web容器连接数据库，数据库处理数据之后，将内容交给web服务器，web服务器返回给客户端解析渲染处理。
 void serve_static(int fd, char *filename, size_t filesize, tk_http_out_t *out){
     // 响应头缓冲（512字节）和数据缓冲（8192字节）
     char header[MAXLINE];
     char buff[SHORTLINE];
-    struct tm tm;
+    struct tm tm; //time
     
     // 返回响应报文头，包含HTTP版本号状态码及状态码对应的短描述
     sprintf(header, "HTTP/1.1 %d %s\r\n", out->status, get_shortmsg_from_status_code(out->status));
